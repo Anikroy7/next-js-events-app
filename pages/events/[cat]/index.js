@@ -1,18 +1,25 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const EventsCatPage = ({ data }) => {
     console.log(data);
+    const finalizeTitle = data[0].city.charAt(0).toUpperCase().concat(data[0].city.slice(1))
+
     return (
         <div>
-            <h1>Events in {data[0].city}</h1>
+            <h1>Events in {finalizeTitle}</h1>
+
             {
-                data.map(ev => <a key={ev.id} href={`/events/${ev.city}/${ev.id}`}>
-                    <Image src={ev.image} height={300} width={300} alt={ev.title} />
-                    <h4>{ev.title}</h4>
-                </a>)
+                data.map(ev =>
+                    <Link key={ev.id} href={`/events/${ev.city}/${ev.id}`}>
+
+                        <Image src={ev.image} height={300} width={300} alt={ev.title} />
+                        <h4>{ev.title}</h4>
+
+                    </Link>)
             }
 
-        </div>
+        </div >
     );
 }
 export default EventsCatPage;
