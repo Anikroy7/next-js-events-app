@@ -4,6 +4,11 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com', 'wembleypark.com'],
   },
+  env: {
+    stripe_public_Key: process.env.STRIPE_PUBLIC_KEY
+  }
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig
+
+

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const EventsCatPage = ({ data }) => {
-    console.log(data);
+    // console.log(data);
     const finalizeTitle = data[0].city.charAt(0).toUpperCase().concat(data[0].city.slice(1))
 
     return (
@@ -15,7 +15,6 @@ const EventsCatPage = ({ data }) => {
 
                         <Image src={ev.image} height={300} width={300} alt={ev.title} />
                         <h4>{ev.title}</h4>
-
                     </Link>)
             }
 
@@ -34,7 +33,7 @@ export async function getStaticPaths() {
             }
         }
     })
-    console.log(allPaths);
+    // console.log(allPaths);
     return {
         paths: allPaths,
         fallback: false
@@ -43,7 +42,7 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps(context) {
-    console.log(context.params.cat);
+    // console.log(context.params.cat);
     const id = context.params.cat;
     const { allEvents } = await import('/data/data.json');
     const data = allEvents.filter(ev => ev.city === id);
